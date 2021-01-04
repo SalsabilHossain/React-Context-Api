@@ -1,19 +1,20 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
+import BookDetails from './Bookdetails';
+import BookContextProvider, { BookContext } from '../context/BookContext';
 
-class BookList extends Component{
-    render(){
-    return(
-        <div>
-            <ul>
-                <li>The way of kings</li>
-                <li>The name of the wind</li>
-                <li>The final Empire</li>
-
-            </ul>
-        </div>
-       
-    );
-    }
+const BookList = () => {
+  const { books } = useContext(BookContext);
+  return books.length ? (
+    <div className="book-list">
+      <ul>
+        {books.map(book => {
+          return ( <BookDetails book={book} key={book.id} /> );
+        })}
+      </ul>
+    </div>
+  ) : (
+    <div className="empty">No books to read.</div>
+  );
 }
 
 export default BookList;

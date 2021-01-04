@@ -1,20 +1,23 @@
 import React from 'react'
 import './App.css';
-import Booklist from './components/BookList';
 import Navbar from './components/Navbar';
+import BookList from './components/BookList'
+import BookContextProvider from './context/BookContext';
+
+//import { ThemeContext } from './context/Themecontext';
 
 
 
 function App() {
   return (
     <div className="App">
-     
-
-      <Navbar/>
-      <Booklist/>
-      
+      <BookContextProvider>
+        <Navbar />
+        <BookList />
+      </BookContextProvider>
     </div>
   );
 }
 
 export default App;
+
